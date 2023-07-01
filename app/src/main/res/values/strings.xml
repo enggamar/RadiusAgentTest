@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RadiusAgentTest</string>
+    <string name="facility_is_not_allowed_with_selected_option">\" facility is not allowed with selected option\"</string>
+</resources>
