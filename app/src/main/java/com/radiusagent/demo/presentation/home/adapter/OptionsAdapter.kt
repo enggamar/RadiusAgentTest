@@ -3,8 +3,6 @@ package com.radiusagent.demo.presentation.home.adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.radiusagent.demo.R
 import com.radiusagent.demo.common.RadiusUtils
@@ -13,7 +11,6 @@ import com.radiusagent.demo.domain.FacilityItemClickedListener
 import com.radiusagent.demo.domain.OnItemClickedListener
 import com.radiusagent.demo.domain.model.Facility
 import com.radiusagent.demo.domain.model.Option
-import com.radiusagent.demo.presentation.home.diffutil.OptionDiffUtil
 import com.radiusagent.demo.presentation.home.viewholder.OptionViewHolder
 
 class OptionsAdapter(val listener: FacilityItemClickedListener) :

@@ -39,6 +39,9 @@ object RadiusUtils {
         }
         return image
     }
+    fun isMoreThan24Hours(actualTime: Long): Boolean {
+        return System.currentTimeMillis() - actualTime >= (24 * 60 * 60 * 1000)
+    }
 
     fun showToast(context: Context, message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

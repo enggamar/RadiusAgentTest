@@ -37,12 +37,16 @@ class HomeActivity : AppCompatActivity() {
                 DBHelper.getInstance(this)
             )
         )
-        homeViewModel.getFacilitiesData()
+        callGetFacilitiesApi()
         homeViewModel.getFacilitiesLiveData()?.observe(this) {
             if (it != null) {
                 mAdapter.notifyListData(it)
             }
         }
+    }
+
+    private fun callGetFacilitiesApi() {
+        if (homeViewModel.is24hoursCompleted()) homeViewModel.getFacilitiesData()
     }
 
     private fun setAdapter() {

@@ -3,6 +3,8 @@ package com.radiusagent.demo.presentation.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
+import com.radiusagent.demo.common.RadiusUtils
+import com.radiusagent.demo.common.preference.RadiusPrefManager
 import com.radiusagent.demo.domain.model.Facilities
 import com.radiusagent.demo.domain.use_case.facilities.FacilityUseCase
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +27,12 @@ open class HomeViewModel(private val useCase: FacilityUseCase) : ViewModel() {
      */
     fun getFacilitiesLiveData(): LiveData<Facilities?>? {
         return useCase.getFacilitiesLiveData()
+    }
+
+    fun is24hoursCompleted(): Boolean {
+        return (RadiusPrefManager.Instance.radiusPrefManager.getLastApiTimeStamp() == 0L || RadiusUtils.isMoreThan24Hours(
+            RadiusPrefManager.Instance.radiusPrefManager.getLastApiTimeStamp()
+        ))
     }
 
 }

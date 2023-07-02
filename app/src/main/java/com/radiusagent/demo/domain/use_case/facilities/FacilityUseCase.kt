@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.radiusagent.demo.common.base_response.Result
+import com.radiusagent.demo.common.preference.RadiusPrefManager
 import com.radiusagent.demo.data.database.DBHelper
 import com.radiusagent.demo.data.remote.NetworkCallback
 import com.radiusagent.demo.domain.model.Facilities
@@ -11,7 +12,6 @@ import com.radiusagent.demo.domain.repository.FacilityRepositry
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.lang.Throwable
 
 
 class FacilityUseCase(private val repo: FacilityRepositry, val dbHelper: DBHelper) {
@@ -22,9 +22,14 @@ class FacilityUseCase(private val repo: FacilityRepositry, val dbHelper: DBHelpe
     fun callFacilitiesApi() {
         repo.callFacilitiesApi()?.enqueue(object : NetworkCallback<Facilities?>() {
             override fun onResponse(result: Result<Facilities?>?) {
+                saveTimeStamp()
                 insertFacilitiesIntoDb(result?.data)
             }
         })
+    }
+
+    private fun saveTimeStamp() {
+        RadiusPrefManager.Instance.radiusPrefManager.saveLastApiTimeStamp(System.currentTimeMillis())
     }
 
     /**

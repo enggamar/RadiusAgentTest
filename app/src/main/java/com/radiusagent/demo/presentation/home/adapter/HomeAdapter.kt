@@ -13,7 +13,6 @@ import com.radiusagent.demo.domain.model.Exclusion
 import com.radiusagent.demo.domain.model.Facilities
 import com.radiusagent.demo.domain.model.Facility
 import com.radiusagent.demo.domain.model.Option
-import com.radiusagent.demo.presentation.home.diffutil.HomeDiffUtil
 import com.radiusagent.demo.presentation.home.viewholder.HomeViewHolder
 
 class HomeAdapter : RecyclerView.Adapter<HomeViewHolder>(), FacilityItemClickedListener {
