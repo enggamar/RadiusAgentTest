@@ -7,9 +7,8 @@ import androidx.security.crypto.MasterKeys
 import com.radiusagent.demo.R
 
 /**
- * Loyalty pref manager
- *This class is responsible for get and save Loyalty preference data
- * @constructor Create empty Loyalty pref manager
+ *This class is responsible for get and save  preference data
+ * @constructor Create empty Radius pref manager
  */
 internal class RadiusPrefManager {
 
@@ -19,7 +18,7 @@ internal class RadiusPrefManager {
     private val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
 
     /**
-     * Init loyalty preference manager
+     * Init Radius preference manager
      *This function is used to initialize Encrypted Shared Preference
      * @param appContext - appContext is the application context
      */
@@ -53,11 +52,16 @@ internal class RadiusPrefManager {
             }
     }
 
-
+    /**
+     * This function is used to get last api timestamp
+     */
     fun getLastApiTimeStamp(): Long {
         return preferences?.getLong(LAST_API_TIME_STAMP, 0L) ?: 0L
     }
 
+    /**
+     * This function is used to save last api timestamp
+     */
     fun saveLastApiTimeStamp(timeStamp: Long) {
         preferences?.edit()?.putLong(LAST_API_TIME_STAMP, timeStamp)?.apply()
 
